@@ -1,0 +1,29 @@
+{
+  "name": "crawler-news-node",
+  "version": "1.0.0",
+  "description": "A crawler for scrapy news on the web",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laedanthehuman/crawler-news-node.git"
+  },
+  "keywords": [
+    "crawler",
+    "node",
+    "news"
+  ],
+  "author": "laedan the human (manoel.josefneto@gmail.com)",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/laedanthehuman/crawler-news-node/issues"
+  },
+  "homepage": "https://github.com/laedanthehuman/crawler-news-node#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1"
+  }
+}
