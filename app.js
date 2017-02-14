@@ -11,37 +11,35 @@ let options = {
 
 let noticias = [];
 rp(options)
-    .then(function ($) {
-        let link_noticias = [];
-        $('div.bastian-feed-item').each((key, el) => {
-            let item = el;
-            let link_noticia = $(item).find('div.feed-post.type-basico > div.feed-post-body > div.feed-text-wrapper > a.feed-post-link').attr('href');
-            link_noticias.push(link_noticia);
+    .then( ($) => {
+//         let link_noticias = [];
+        const link_noticias = $('div.bastian-feed-item').map((key, el) => 
+                                        $(el).find('div.feed-post.type-basico > div.feed-post-body > div.feed-text-wrapper > a.feed-post-link').attr('href');
+
         });
 
-        link_noticias.forEach(link => {
+        link_noticias.map(link => {
             let link_op;
             if (link) {
                 link_op = {
                     uri: link,
-                    transform: function (body) {
+                    transform: (body) => {
                         return cheerio.load(body);
                     }
                 };
-            } else {
-                return;
-            }
             rp(link_op)
-                .then(function ($) {
+                .then( ($) => {
                     let subTitle = $('main').find('div > h2.content-head__subtitle').text()
                     let title = $('main').find('div > h1.content-head__title').text();
                     let paragraph = $('main').find('div.mc-column.content-text.active-extra-styles > p').text();
+                
                     noticias.push({
                         title: title,
                         subTitle: subTitle,
                         paragraphs: paragraph
                     });
                 });
+            } 
         });
     })
     .catch((err) => {
